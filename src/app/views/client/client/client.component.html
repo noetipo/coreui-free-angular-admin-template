@@ -1,0 +1,39 @@
+<router-outlet></router-outlet>
+<h5>hola pagina cliente</h5>
+<button (click)="postNewClient()"> agregar nuevo cliente</button>
+
+<c-col xs="12">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong>Angular Table</strong> <small>Basic example</small>
+    </c-card-header>
+    <c-card-body>
+        <table cTable>
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Tipo Documento</th>
+            <th scope="col">Numero Documento</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Opciones</th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let client of clients">
+            <th scope="row">1</th>
+            <td>{{client.nombre}}</td>
+            <td>{{client.tipoDocumento}}</td>
+            <td>{{client.numeroDocumento}}</td>
+            <td>{{client.direccion}}</td>
+            <td><button (click)="goEdit(client.id)"> edit</button>
+              <button (click)="goDelete(client.id)"> Del</button></td>
+          </tr>
+          </tbody>
+        </table>
+    </c-card-body>
+  </c-card>
+</c-col>
+
+

@@ -1,0 +1,49 @@
+<p>new works!</p>
+
+
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong>Angular Form Control</strong> <small>Sizing</small>
+    </c-card-header>
+    <c-card-body>
+<form [formGroup]="clientForm">
+  <div>
+    <label> nombre: </label>
+    <input aria-label="lg input example"
+           formControlName="nombre"
+           placeholder="Large input"
+           sizing="lg"
+           type="text"
+    />
+  </div>
+
+  <br />
+  <label> Tipo Documento: </label>
+  <input aria-label="default input example"
+         formControlName="tipoDocumento"
+         placeholder="Default input"
+         type="text"
+  />
+  <br />
+  <label> Numero Documento: </label>
+  <input aria-label="sm input example"
+         formControlName="numeroDocumento"
+         placeholder="Small input"
+         sizing="sm"
+         type="text"
+  />
+  <br />
+  <label> Direccion: </label>
+  <input aria-label="sm input example"
+         formControlName="direccion"
+         placeholder="Small input"
+         sizing="sm"
+         type="text"
+  />
+</form>
+
+<button (click)="save()"> guardar</button>
+    </c-card-body>
+  </c-card>
+
+<button (click)="goBack()">Atras</button>

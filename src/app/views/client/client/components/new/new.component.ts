@@ -1,0 +1,62 @@
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {
+  CardBodyComponent,
+  CardComponent,
+  CardHeaderComponent,
+  ColComponent,
+  FormControlDirective
+} from "@coreui/angular";
+import {DocsExampleComponent} from "@docs-components/docs-example/docs-example.component";
+import {ClientService} from "../../../../../providers/services/client.service";
+
+@Component({
+  selector: 'app-new',
+  standalone: true,
+  imports: [
+    CardBodyComponent,
+    CardComponent,
+    CardHeaderComponent,
+    ColComponent,
+    DocsExampleComponent,
+    FormControlDirective,
+    ReactiveFormsModule
+  ],
+  templateUrl: './new.component.html',
+  styleUrl: './new.component.scss'
+})
+export class NewComponent implements OnInit {
+
+
+  constructor(private router: Router,
+              private clientService:ClientService) { }
+  clientForm = new FormGroup({
+    nombre: new FormControl('', Validators.required),
+    tipoDocumento: new FormControl('', Validators.required),
+    numeroDocumento: new FormControl('', Validators.required),
+    direccion: new FormControl('', Validators.required)
+
+
+  });
+
+
+  goBack() {
+    this.router.navigate(['/client'], { state: { reload: true } });
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  save() {
+    console.log(this.clientForm.value);
+    if (this.clientForm.valid) {
+      this.clientService.add$(this.clientForm.value).subscribe(response => {
+        this.clientForm.reset();
+        this.router.navigate(['/client']);
+      });
+    }
+
+  }
+}
