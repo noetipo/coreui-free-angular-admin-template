@@ -18,7 +18,8 @@
         <c-col md="6">
           <label class="fw-bold">Producto:</label>
           <select formControlName="producto" (change)="addSelectedProduct()" class="form-control">
-            <option *ngFor="let producto of productos" [ngValue]="producto">{{ producto.descripcion }}</option>
+            <option *ngFor="let producto of productos" [ngValue]="producto">{{ producto.descripcion }} {{producto.precioUnitario }}</option>
+
           </select>
         </c-col>
 
@@ -75,7 +76,7 @@
         </tbody>
       </table>
 
-      <!-- ✅ Mostrar Total General -->
+
       <div class="text-end mt-3">
         <h5><strong>Total General: {{ comprobanteForm.value.total | currency: 'PEN' }}</strong></h5>
       </div>
@@ -91,3 +92,4 @@
     </div>
   </c-card-body>
 </c-card>
+

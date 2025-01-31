@@ -6,6 +6,6 @@ import {ENS_POINTS} from "../utils/end-points";
 @Injectable({providedIn: 'root'})
 export class SaleService extends EntityDataService<any>{
   constructor(protected override httpClient:HttpClient) {
-    super(httpClient,ENS_POINTS.client.sale);
+    super(httpClient,ENS_POINTS.sale.sale);
   }
 }

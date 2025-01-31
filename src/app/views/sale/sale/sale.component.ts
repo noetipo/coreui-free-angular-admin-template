@@ -42,25 +42,27 @@ public comprobantes:Comprobante[]=[];
   private getSale():void {
     this.saleService.getAll$().subscribe(response=>{
       this.comprobantes=response;
+      console.log(this.comprobantes);
     });
   }
+
   public postNewComprobante(): void {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
 
-  goDelete(id: number=0) {
-    this.saleService.delete$(id).subscribe(response=>{
-      if(response){
-        this.getSale();
+    goDelete(id: number=0) {
+      this.saleService.delete$(id).subscribe(response=>{
+        if(response){
+          this.getSale();
+        }
+
+      })
+    }
+
+      openModal(comprobante: Comprobante) {
+        console.log(comprobante);
+        this.selectedComprobante = comprobante;
+        this.isModalVisible = true;
       }
-
-    })
-  }
-
-  openModal(comprobante: Comprobante) {
-    console.log(comprobante);
-    this.selectedComprobante = comprobante;
-    this.isModalVisible = true;
-  }
 }
