@@ -1,0 +1,47 @@
+<c-modal [(visible)]="isVisible" #modalXl id="modalXl" size="xl">
+  <c-modal-header>
+    <h5 class="modal-title">Detalles del Comprobante</h5>
+    <button cButton color="close" (click)="closeModal()"></button>
+  </c-modal-header>
+
+  <c-modal-body>
+    <h6><strong>Serie - Número:</strong> {{ comprobante?.serie }} - {{ comprobante?.numero }}</h6>
+    <h6><strong>Fecha Emisión:</strong> {{ comprobante?.fechaEmision }}</h6>
+    <h6><strong>Cliente:</strong> {{ comprobante?.cliente!.nombre }}</h6>
+    <h6><strong>Tipo Comprobante:</strong> {{ comprobante?.tipoComprobante }}</h6>
+    <h6><strong>Moneda:</strong> {{ comprobante?.moneda }}</h6>
+    <h6><strong>Total:</strong> {{ comprobante?.total | currency: 'PEN' }}</h6>
+
+    <hr>
+
+    <h5>Detalles de Productos</h5>
+    <table cTable class="table table-hover table-bordered">
+      <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Subtotal</th>
+        <th>IGV</th>
+        <th>Total</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (detalle of comprobante?.detalles; track detalle) {
+          <tr>
+            <td>{{ detalle.producto!.descripcion }}</td>
+            <td>{{ detalle.cantidad }}</td>
+            <td>{{ detalle.precioUnitario | currency: 'PEN' }}</td>
+            <td>{{ detalle.subtotal | currency: 'PEN' }}</td>
+            <td>{{ detalle.igv | currency: 'PEN' }}</td>
+            <td>{{ detalle.total | currency: 'PEN' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </c-modal-body>
+
+  <c-modal-footer>
+    <button cButton color="secondary" (click)="closeModal()">Cerrar</button>
+  </c-modal-footer>
+</c-modal>

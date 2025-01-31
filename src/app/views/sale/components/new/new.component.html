@@ -1,0 +1,93 @@
+<p class="text-center text-primary fw-bold">Nuevo Comprobante</p>
+
+<c-card class="mb-4">
+  <c-card-header class="bg-light">
+    <strong>Formulario de Comprobante</strong> <small>Complete los datos</small>
+  </c-card-header>
+
+  <c-card-body>
+    <form [formGroup]="comprobanteForm">
+      <c-row class="gy-3">
+        <c-col md="6" formGroupName="cliente">
+          <label class="fw-bold">Cliente:</label>
+          <select formControlName="id" class="form-control" (change)="updateClientData()">
+            <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">{{ cliente.nombre }}</option>
+          </select>
+        </c-col>
+
+        <c-col md="6">
+          <label class="fw-bold">Producto:</label>
+          <select formControlName="producto" (change)="addSelectedProduct()" class="form-control">
+            <option *ngFor="let producto of productos" [ngValue]="producto">{{ producto.descripcion }}</option>
+          </select>
+        </c-col>
+
+        <c-col md="6">
+          <label class="fw-bold">Tipo Comprobante:</label>
+          <select formControlName="tipoComprobante" class="form-control">
+            <option value="Factura">Factura</option>
+            <option value="Boleta">Boleta</option>
+          </select>
+        </c-col>
+
+        <c-col md="6">
+          <label class="fw-bold">Moneda:</label>
+          <select formControlName="moneda" class="form-control">
+            <option value="PEN">Soles (PEN)</option>
+            <option value="USD">Dólares (USD)</option>
+          </select>
+        </c-col>
+      </c-row>
+
+      <hr />
+
+      <h5 class="text-primary">Detalles de Productos</h5>
+
+      <table cTable class="table table-hover mt-3">
+        <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Subtotal</th>
+          <th>IGV</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (detalle of detalles.controls; track detalle) {
+            @let index = $index;
+            <tr>
+              <td>{{ detalle.value.producto.descripcion }}</td>
+              <td><input type="number" [formControl]="asFormControl(detalle.get('cantidad'))" class="form-control" /></td>
+              <td>{{ detalle.value.precioUnitario | currency: 'PEN' }}</td>
+              <td>{{ detalle.value.subtotal | currency: 'PEN' }}</td>
+              <td>{{ detalle.value.igv | currency: 'PEN' }}</td>
+              <td>{{ detalle.value.total | currency: 'PEN' }}</td>
+              <td>
+                <button type="button" cButton color="danger" (click)="removeDetalle(index)">
+                  <c-icon name="cil-trash"></c-icon>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+      <!-- ✅ Mostrar Total General -->
+      <div class="text-end mt-3">
+        <h5><strong>Total General: {{ comprobanteForm.value.total | currency: 'PEN' }}</strong></h5>
+      </div>
+
+    </form>
+    <div class="d-flex justify-content-end mt-4 gap-3">
+      <button (click)="goBack()" cButton color="danger">
+        <c-icon name="cil-backspace"></c-icon> Atrás
+      </button>
+      <button (click)="save()" cButton color="primary">
+        <c-icon name="cil-save"></c-icon> Guardar
+      </button>
+    </div>
+  </c-card-body>
+</c-card>

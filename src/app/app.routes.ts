@@ -27,6 +27,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/client/routes').then((m) => m.routes)
       },
       {
+        path: 'sale',
+        loadChildren: () => import('./views/sale/routes').then((m) => m.routes)
+      },
+      {
         path: 'base',
         loadChildren: () => import('./views/base/routes').then((m) => m.routes)
       },

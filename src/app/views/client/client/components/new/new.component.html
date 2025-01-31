@@ -1,49 +1,66 @@
-<p>new works!</p>
+<p class="text-center text-primary fw-bold">Nuevo Cliente</p>
 
+<c-card class="mb-4">
+  <c-card-header class="bg-light">
+    <strong>Formulario de Cliente</strong> <small>Complete los datos</small>
+  </c-card-header>
 
-  <c-card class="mb-4">
-    <c-card-header>
-      <strong>Angular Form Control</strong> <small>Sizing</small>
-    </c-card-header>
-    <c-card-body>
-<form [formGroup]="clientForm">
-  <div>
-    <label> nombre: </label>
-    <input aria-label="lg input example"
-           formControlName="nombre"
-           placeholder="Large input"
-           sizing="lg"
-           type="text"
-    />
-  </div>
+  <c-card-body>
+    <form [formGroup]="clientForm">
+      <c-row class="gy-3">
+        <c-col md="6">
+          <label class="fw-bold">Nombre:</label>
+          <input
+            cFormControl
+            formControlName="nombre"
+            type="text"
+            placeholder="Ingrese el nombre"
+            class="form-control"
+          />
+        </c-col>
 
-  <br />
-  <label> Tipo Documento: </label>
-  <input aria-label="default input example"
-         formControlName="tipoDocumento"
-         placeholder="Default input"
-         type="text"
-  />
-  <br />
-  <label> Numero Documento: </label>
-  <input aria-label="sm input example"
-         formControlName="numeroDocumento"
-         placeholder="Small input"
-         sizing="sm"
-         type="text"
-  />
-  <br />
-  <label> Direccion: </label>
-  <input aria-label="sm input example"
-         formControlName="direccion"
-         placeholder="Small input"
-         sizing="sm"
-         type="text"
-  />
-</form>
+        <c-col md="6">
+          <label class="fw-bold">Tipo Documento:</label>
+          <input
+            cFormControl
+            formControlName="tipoDocumento"
+            type="text"
+            placeholder="Ingrese el tipo de documento"
+            class="form-control"
+          />
+        </c-col>
 
-<button (click)="save()"> guardar</button>
-    </c-card-body>
-  </c-card>
+        <c-col md="6">
+          <label class="fw-bold">Número Documento:</label>
+          <input
+            cFormControl
+            formControlName="numeroDocumento"
+            type="text"
+            placeholder="Ingrese el número de documento"
+            class="form-control"
+          />
+        </c-col>
 
-<button (click)="goBack()">Atras</button>
+        <c-col md="6">
+          <label class="fw-bold">Dirección:</label>
+          <input
+            cFormControl
+            formControlName="direccion"
+            type="text"
+            placeholder="Ingrese la dirección"
+            class="form-control"
+          />
+        </c-col>
+      </c-row>
+    </form>
+
+    <div class="d-flex justify-content-end mt-4 gap-3">
+      <button (click)="goBack()" cButton color="danger">
+        <c-icon name="cil-backspace"></c-icon> Atrás
+      </button>
+      <button (click)="save()" cButton color="primary">
+        <c-icon name="cil-save"></c-icon> Guardar
+      </button>
+    </div>
+  </c-card-body>
+</c-card>

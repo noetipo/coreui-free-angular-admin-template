@@ -1,39 +1,51 @@
 <router-outlet></router-outlet>
-<h5>hola pagina cliente</h5>
-<button (click)="postNewClient()"> agregar nuevo cliente</button>
+
+<div class="d-flex justify-content-between align-items-center my-3">
+  <h5 class="text-primary fw-bold">📋 Lista de Clientes</h5>
+  <button (click)="postNewClient()" cButton color="success">
+    <c-icon name="cil-user-plus"></c-icon> Agregar Cliente
+  </button>
+</div>
 
 <c-col xs="12">
   <c-card class="mb-4">
-    <c-card-header>
-      <strong>Angular Table</strong> <small>Basic example</small>
+    <c-card-header class="bg-light">
+      <strong>Clientes Registrados</strong> <small>Lista actualizada</small>
     </c-card-header>
     <c-card-body>
-        <table cTable>
-          <thead>
+      <div class="table-responsive">
+        <table cTable class="table table-hover table-bordered">
+          <thead class="table-dark">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Tipo Documento</th>
-            <th scope="col">Numero Documento</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Opciones</th>
-
+            <th scope="col">Número Documento</th>
+            <th scope="col">Dirección</th>
+            <th scope="col" class="text-center">Opciones</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let client of clients">
-            <th scope="row">1</th>
-            <td>{{client.nombre}}</td>
-            <td>{{client.tipoDocumento}}</td>
-            <td>{{client.numeroDocumento}}</td>
-            <td>{{client.direccion}}</td>
-            <td><button (click)="goEdit(client.id)"> edit</button>
-              <button (click)="goDelete(client.id)"> Del</button></td>
-          </tr>
+            @for (client of clients; track client.id) {
+              <tr>
+                <th scope="row">{{ client.id}}</th>
+                <td>{{ client.nombre }}</td>
+                <td>{{ client.tipoDocumento }}</td>
+                <td>{{ client.numeroDocumento }}</td>
+                <td>{{ client.direccion }}</td>
+                <td class="text-center">
+                  <button (click)="goEdit(client.id)" cButton color="warning" class="me-2">
+                    <c-icon name="cil-pencil"></c-icon> Editar
+                  </button>
+                  <button (click)="goDelete(client.id)" cButton color="danger">
+                    <c-icon name="cil-trash"></c-icon> Eliminar
+                  </button>
+                </td>
+              </tr>
+            }
           </tbody>
         </table>
+      </div>
     </c-card-body>
   </c-card>
 </c-col>
-
-

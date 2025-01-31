@@ -2,14 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {
+  ButtonDirective,
   CardBodyComponent,
   CardComponent,
   CardHeaderComponent,
   ColComponent,
-  FormControlDirective
+  FormControlDirective, RowComponent
 } from "@coreui/angular";
-import {DocsExampleComponent} from "@docs-components/docs-example/docs-example.component";
 import {ClientService} from "../../../../../providers/services/client.service";
+import {IconComponent} from "@coreui/icons-angular";
 
 @Component({
   selector: 'app-new',
@@ -19,9 +20,11 @@ import {ClientService} from "../../../../../providers/services/client.service";
     CardComponent,
     CardHeaderComponent,
     ColComponent,
-    DocsExampleComponent,
     FormControlDirective,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonDirective,
+    IconComponent,
+    RowComponent
   ],
   templateUrl: './new.component.html',
   styleUrl: './new.component.scss'

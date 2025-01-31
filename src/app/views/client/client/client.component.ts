@@ -18,14 +18,16 @@ import {
 import {ClientService} from "../../../providers/services/client.service";
 import {Client} from "./models/client";
 import {ActivatedRoute, NavigationEnd, Router, RouterOutlet} from "@angular/router";
-import {Subscription} from "rxjs";
+import {of, Subscription} from "rxjs";
 import {filter} from "rxjs/operators";
+import {IconComponent} from "@coreui/icons-angular";
+import _default from "chart.js/dist/core/core.interaction";
 
 @Component({
     selector: 'app-form-controls',
     templateUrl: './client.component.html',
     styleUrls: ['./client.component.scss'],
-  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, FormControlDirective, ButtonDirective, NgStyle, TableDirective, CommonModule, RouterOutlet]
+  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, DocsExampleComponent, ReactiveFormsModule, FormsModule, FormDirective, FormLabelDirective, ButtonDirective, NgStyle, TableDirective, CommonModule, RouterOutlet, IconComponent]
 })
 export class ClientComponent implements OnInit, OnDestroy {
 public clients:Client[]=[];
@@ -79,4 +81,6 @@ public clients:Client[]=[];
 
     })
   }
+
+
 }

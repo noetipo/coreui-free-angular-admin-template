@@ -135,6 +135,19 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    name: 'Sales',
+    url: '/sale',
+    iconComponent: { name: 'cil-cursor' },
+    children: [
+      {
+        name: 'sale',
+        url: '/sale/sale',
+        icon: 'nav-icon-bullet'
+      },
+
+    ]
+  },
+  {
     name: 'Client',
     url: '/client',
     iconComponent: { name: 'cil-cursor' },

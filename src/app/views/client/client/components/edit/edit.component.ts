@@ -3,7 +3,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ClientService} from "../../../../../providers/services/client.service";
 import {Client} from "../../models/client";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {CardBodyComponent, CardComponent, CardHeaderComponent} from "@coreui/angular";
+import {
+  ButtonDirective,
+  CardBodyComponent,
+  CardComponent,
+  CardHeaderComponent, ColComponent,
+  FormControlDirective, RowComponent
+} from "@coreui/angular";
+import {IconComponent} from "@coreui/icons-angular";
 
 @Component({
   selector: 'app-edit',
@@ -13,7 +20,12 @@ import {CardBodyComponent, CardComponent, CardHeaderComponent} from "@coreui/ang
     CardComponent,
     CardHeaderComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonDirective,
+    FormControlDirective,
+    ColComponent,
+    IconComponent,
+    RowComponent
   ],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss'
